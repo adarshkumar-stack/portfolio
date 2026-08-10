@@ -15,12 +15,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.className} h-full antialiased`}
-    >
-      <body className="min-h-full flex justify-center bg-neutral-200">
-        <div className="min-h-full w-7xl bg-white overflow-auto">
+    <html lang="en" className={inter.className}>
+      <body className="min-h-screen bg-neutral-200 antialiased">
+        <div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col bg-white">
           {children}
         </div>
       </body>
