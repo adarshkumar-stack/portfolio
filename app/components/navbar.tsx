@@ -20,11 +20,11 @@ export default function Navbar() {
     return(
         <div className="sticky top-0 z-50 w-full">
             <motion.div
-                className="flex w-full items-center justify-between bg-white/85 px-4 py-1  backdrop-blur mx-auto "
+                className="flex w-full items-center justify-between bg-white/55 px-4 py-1  backdrop-blur mx-auto "
                 animate={{
                     paddingLeft: shrink? 6 : 16,
-                    borderRadius: shrink? "200px": "",
-                    width: shrink? "90%" : "100%",
+                    borderRadius: shrink? "200px": "0px",
+                    width: shrink? "80%" : "100%",
                     y: shrink? 6 : 0,
                     background: shrink
                         ? "rgba(255,255,255,0.55)"
@@ -40,18 +40,22 @@ export default function Navbar() {
                 <motion.img
                     src="/portfolio_profile_pic.jpg"
                     alt="profile"
-                    height={55}
-                    width={55}
-                    loading="lazy"
+                    height={45}
+                    width={45}
+                    loading="eager"
                     className="h-12 w-12 cursor-pointer rounded-full shadow-[0_0_4px_rgba(0,0,0,0.8)] transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:opacity-70 sm:h-[55px] sm:w-[55px]"
-                    whileInView={{
-                        scale: [0.95, 1.05, 1],
-                        opacity: 1,
-                        filter: "blur(0px)"
+                    animate={{
+                        y: [-200, 0],
+                        rotateY: 20
+                    }}
+                    initial={{
+                        y: -800
                     }}
                     transition={{
                         duration: 0.2,
-                        ease: "anticipate"
+                        type: "spring",
+
+                        ease: "easeInOut",
                     }}
                 />
                 <div className="flex items-center">
@@ -63,7 +67,19 @@ export default function Navbar() {
                         className="relative flex h-10 min-w-10 items-center justify-center rounded-full px-3 text-center text-sm font-semibold text-neutral-700 transition-colors hover:text-neutral-900 sm:min-w-20"
                         >
                             {hovered === index && <motion.div layoutId="hover" className="absolute inset-0 rounded-full bg-green-300" />}
-                            <span className="relative z-10">{item.title}</span>
+                            <motion.span 
+                                initial={{
+                                    opacity: 0
+                                }}
+                                animate={{
+                                    opacity: 1
+                                }}
+                                transition={{
+                                    duration: 0.3
+                                }}
+                                className="relative z-10">
+                                    {item.title}
+                            </motion.span>
                     </a>)}
                 </div>
             </motion.div>
