@@ -40,10 +40,10 @@ export default function Navbar() {
                 <motion.img
                     src="/portfolio_profile_pic.jpg"
                     alt="profile"
-                    height={45}
-                    width={45}
+                    height={40}
+                    width={40}
                     loading="eager"
-                    className="h-12 w-12 cursor-pointer rounded-full shadow-[0_0_4px_rgba(0,0,0,0.8)] transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:opacity-70 sm:h-[55px] sm:w-[55px]"
+                    className="cursor-pointer rounded-full shadow-[0_0_4px_rgba(0,0,0,0.8)] transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:opacity-70"
                     animate={{
                         y: [-200, 0],
                         rotateY: 20
@@ -64,9 +64,9 @@ export default function Navbar() {
                         onMouseLeave={() => setHovered(null)}
                         key={index}
                         href={item.href}
-                        className="relative flex h-10 min-w-10 items-center justify-center rounded-full px-3 text-center text-sm font-semibold text-neutral-700 transition-colors hover:text-neutral-900 sm:min-w-20"
+                        className="relative flex h-8 min-w-10 items-center justify-center rounded-full px-3 text-center text-xs font-semibold text-neutral-700 transition-colors hover:text-neutral-900 sm:min-w-20"
                         >
-                            {hovered === index && <motion.div layoutId="hover" className="absolute inset-0 rounded-full bg-green-300" />}
+                            {hovered === index && <motion.div layoutId="hover" className="absolute inset-0 rounded-full bg-stone-200" />}
                             <motion.span 
                                 initial={{
                                     opacity: 0

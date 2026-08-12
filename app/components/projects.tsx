@@ -9,22 +9,7 @@ export default function Projects () {
     const [imghover, setimghover] = useState(false)
     return (
         <div className="pt-25 pl-10">
-            <motion.p
-                initial={{
-                    opacity: 0,
-                    filter: "blur(3px)"
-                }}
-                animate={{
-                    opacity: 1,
-                    filter: "blur(0px)"
-                }} 
-                transition={{
-                    delay: 1,
-                    duration: 0.2
-                }}
-                className="text-shadow-xs text-xl text-neutral-500 ">
-                I love building webapps and products that can impact millions of lives
-            </motion.p> 
+             
             <div className="mx-auto grid grid-cols-2 pt-10">
                 {projects.slice(0,4).map((project, index) => (
                     <div key={index}>
@@ -45,7 +30,7 @@ export default function Projects () {
                             <div className="group relative inline-block cursor-pointer">
                                 <motion.img
                                 src={project.demoImage}
-                                width={500}
+                                width={350}
                                 alt="project"
                                 loading="lazy"
                                 className="block rounded-xl transition-all duration-300 group-hover:blur-[2px] group-hover:scale-[1.02]"
