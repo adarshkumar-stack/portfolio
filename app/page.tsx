@@ -3,6 +3,7 @@ import Header from "./components/header"
 import Projects from "./components/projects"
 import Banner from "./components/banner"
 import About from "./components/about"
+import Stack from "./components/techstack"
 
 export default function Home() {
   const title = "Adarsh Kumar Singh"
@@ -14,8 +15,8 @@ export default function Home() {
       <br />
       <Header title={title} description={description} width={750}></Header>
       <About></About>
+      <Stack></Stack>
       <Projects></Projects>
-      <section className="w-full h-600"></section>
     </main>
   )
 }

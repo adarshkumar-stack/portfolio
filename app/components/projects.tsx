@@ -8,7 +8,7 @@ import { MdArrowRightAlt } from "react-icons/md"
 export default function Projects () {
     const [imghover, setimghover] = useState(false)
     return (
-        <div className="pt-25 pl-10">
+        <div className="pt-25 px-10">
              
             <div className="mx-auto grid grid-cols-2 pt-10">
                 {projects.slice(0,4).map((project, index) => (
@@ -30,7 +30,7 @@ export default function Projects () {
                             <div className="group relative inline-block cursor-pointer">
                                 <motion.img
                                 src={project.demoImage}
-                                width={350}
+                                width={380}
                                 alt="project"
                                 loading="lazy"
                                 className="block rounded-xl transition-all duration-300 group-hover:blur-[2px] group-hover:scale-[1.02]"
