@@ -33,10 +33,10 @@ export default function Projects () {
                                 width={380}
                                 alt="project"
                                 loading="lazy"
-                                className="block rounded-xl transition-all duration-300 group-hover:blur-[2px] group-hover:scale-[1.02]"
+                                className="block rounded-xl transition-all duration-300 group-hover:blur-[1px] group-hover:scale-[1.02]"
                                 />
                                 <div
-                                    className="absolute inset-0 flex items-center justify-center gap-2 rounded-xl bg-neutral-700/0 opacity-0 transition-all duration-200 group-hover:bg-neutral-700/45 group-hover:scale-[1.02] group-hover:opacity-100
+                                    className="absolute inset-0 flex items-center justify-center gap-2 rounded-xl bg-neutral-700/0 opacity-0 transition-all duration-200 group-hover:bg-neutral-700/75 group-hover:scale-[1.02] group-hover:opacity-100
                                     "
                                 >
                                     <a
