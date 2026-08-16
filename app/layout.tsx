@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body className="min-h-screen bg-linear-to-br from-black via-black to-blue-950 border  border-neutral-800 antialiased">
-        <div className="mx-auto flex min-h-screen w-full max-w-4xl flex-col">
+        <div className="mx-auto flex min-h-screen w-full max-w-4xl flex-col border border-neutral-800">
           {children}
         </div>
       </body>
