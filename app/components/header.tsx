@@ -24,7 +24,7 @@ export default function Header({title, description, width}: {
 
     const opacityContent = useTransform(scrollYProgress, [0,0.5,1], [0, 1, 0])
     const scaleValue = useTransform(scrollYProgress, [0.5,1], [1, 0.8])
-    const translateHeight = useTransform(scrollYProgress, [0.5, 1], [25, -200])
+    const translateHeight = useTransform(scrollYProgress, [0.5, 1], [16, -200])
 
     return(
         <motion.div 
@@ -34,7 +34,7 @@ export default function Header({title, description, width}: {
                 opacity: opacityContent,
                 scale: scaleValue,
             }}
-            className="pt-16 px-5 flex items-center"
+            className="mt-16  mb-30 px-5 flex items-center"
         >
             
             <motion.div
@@ -60,9 +60,9 @@ export default function Header({title, description, width}: {
                     rotateZ: 360,
                     transitionDuration: 1,
                 }}
-                className="p-0.5 rounded-full bg-conic-180 from-neutral-500 via-neutral-950 to-neutral-500">
+                className="p-0.5 rounded-full bg-conic-180 from-red-700 via-neutral-950 to-red-700">
                 <Image
-                    src="/pixelated_profile_2_bgremoved.png"
+                    src="/pixelated_profile_3_bgremoved.png"
                     alt="programmer"
                     height={800}
                     width={800}
@@ -84,7 +84,7 @@ export default function Header({title, description, width}: {
                         transition={{
                             duration: 0.3
                         }}
-                        className="tracking-tight flex items-center gap-4  text-shadow-lg text-[40px] text-neutral-300 font-serif">
+                        className="tracking-tight flex items-center gap-4  text-shadow-lg text-[50px] text-red-100/50 font-serif">
                             {title}
                             <MdVerified className="text-blue-500 text-xl"></MdVerified>
                     </motion.h1>

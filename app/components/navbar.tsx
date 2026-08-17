@@ -64,9 +64,9 @@ export default function Navbar() {
                         onMouseLeave={() => setHovered(null)}
                         key={index}
                         href={item.href}
-                        className="relative flex h-8 min-w-10 items-center justify-center rounded-full px-3 text-center text-xs font-semibold text-neutral-400 transition-colors hover:text-neutral-800 sm:min-w-20"
+                        className="relative flex h-8 min-w-10 items-center justify-center rounded-full px-3 text-center text-xs font-semibold text-red-700/70 transition-colors sm:min-w-20"
                         >
-                            {hovered === index && <motion.div layoutId="hover" className="absolute inset-0 rounded-full bg-stone-600 " />}
+                            {hovered === index && <motion.div layoutId="hover" className="absolute inset-0 rounded-full bg-red-100 " />}
                             <motion.span 
                                 initial={{
                                     opacity: 0

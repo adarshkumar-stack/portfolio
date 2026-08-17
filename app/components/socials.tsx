@@ -9,10 +9,10 @@ export default function Socials() {
   const mouseX = useMotionValue(Infinity)
 
   return (
-    <div className='m-30 flex flex-col justify-center items-center'>
+    <div className='m-16 flex flex-col justify-center items-center'>
         <div className=" text-xl text-neutral-100 pl-10  font-mono lowercase flex gap-2 items-center justify-center">
             My socials...
-            <span className='bg-neutral-800 border border-neutral-700 p-1 text-[12px] rounded-sm text-yellow-700'>
+            <span className='bg-neutral-900 border border-yellow-900 p-1 text-[12px] rounded-sm text-yellow-500'>
                 connect with me here
             </span>
         </div>
@@ -36,7 +36,7 @@ function DockIcon({ mouseX, icon: Icon, label, href, index }: DockIconProps) {
         const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 }
         return val - bounds.x - bounds.width / 2
     })
-    const widthSync = useTransform(distance, [-120, 0, 120], [44, 68, 44])
+    const widthSync = useTransform(distance, [-120, 0, 120], [44, 58, 44])
     const width = useSpring(widthSync, { mass: 0.1, stiffness: 200, damping: 15 })
 
     return (
@@ -62,7 +62,7 @@ function DockIcon({ mouseX, icon: Icon, label, href, index }: DockIconProps) {
                 width, 
                 height: width 
             }}
-            className="relative m-4 flex items-center justify-center bg-neutral-900 border border-neutral-800 rounded-full text-white hover:text-red-700 hover:bg-neutral-800 transition-colors group"
+            className="relative m-4 flex items-center justify-center bg-neutral-900 border border-neutral-800 rounded-full text-white hover:text-white/30 transition-colors group"
             >
             <Icon className="text-xl" />
             <span className="absolute -top-9 opacity-0 group-hover:opacity-100 transition-opacity bg-black border border-neutral-800 text-neutral-300 text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none">

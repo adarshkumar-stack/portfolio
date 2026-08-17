@@ -8,7 +8,7 @@ import { MdArrowRightAlt } from "react-icons/md"
 export default function Projects () {
     const [imghover, setimghover] = useState(false)
     return (
-        <div className="pt-25 px-10">
+        <div className="p-15 px-10">
              
             <div className="mx-auto grid grid-cols-2 pt-10">
                 {projects.slice(0,4).map((project, index) => (
@@ -36,7 +36,7 @@ export default function Projects () {
                                 className="block rounded-xl transition-all duration-300 group-hover:blur-[1px] group-hover:scale-[1.02]"
                                 />
                                 <div
-                                    className="absolute inset-0 flex items-center justify-center gap-2 rounded-xl bg-neutral-700/0 opacity-0 transition-all duration-200 group-hover:bg-neutral-700/75 group-hover:scale-[1.02] group-hover:opacity-100
+                                    className="absolute inset-0 flex items-center justify-center gap-2 rounded-xl bg-neutral-900 opacity-0 transition-all duration-200 group-hover:bg-black/50 group-hover:scale-[1.02] group-hover:opacity-100
                                     "
                                 >
                                     <a
@@ -68,7 +68,7 @@ export default function Projects () {
                     </div>
                 ))}
             </div>
-            <button className="flex justify-center items-center mx-auto mt-8 gap-2 px-4 py-1 bg-neutral-200 rounded-lg cursor-pointer text-lg text-neutral-600 text-shadow-xs text-shadow-neutral-400 shadow-[0_0_3px_rgba(0,0,0,0.4)] hover:scale-[1.02] transition-all duration-200 ease-in-out">
+            <button className="flex justify-center items-center mx-auto mt-8 gap-2 px-4 py-1  rounded-lg cursor-pointer text-lg text-red-700/70 border-2 bg-black/50 border-red-700/70 hover:scale-[1.02] ">
                 show all
                 <MdArrowRightAlt className=" size-7"></MdArrowRightAlt>
             </button>

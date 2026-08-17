@@ -23,12 +23,12 @@ export default function About() {
             initial={{
 
             }}
-            className="mt-20 mx-10">
-            <h1 className="text-6xl mx-auto w-fit font-extrabold text-black [-webkit-text-stroke:1px_#e5e5e5] ">
+            className="m-20 mx-10">
+            <h1 className="text-6xl mx-auto w-fit font-extrabold text-black [-webkit-text-stroke:2px_#690101] ">
                 About me
             </h1>
             <div className="mx-auto mt-10 flex w-full max-w-5xl flex-col gap-8 px-4 text-neutral-200 sm:px-6">
-                <section className="rounded-lg border border-neutral-800 bg-black shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                <section className="rounded-lg border border-neutral-800 bg-black shadow-[0_0_20px_rgba(251,84,43,0.3)]">
                     <div className="flex items-center justify-between border-b border-neutral-800 px-4 py-3">
                         <div className="flex items-center gap-2">
                             <span className="h-2.5 w-2.5 rounded-full bg-red-700" />
