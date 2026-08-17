@@ -1,6 +1,8 @@
 import Navbar from "./components/navbar"
 import Header from "./components/header"
 import Projects from "./components/projects"
+import Socials from "./components/socials"
+import About from "./components/about"
 
 export default function Home() {
   const title = "Adarsh Kumar Singh"
@@ -10,6 +12,8 @@ export default function Home() {
       <Navbar />
       <br />
       <Header title={title} description={description} width={750}></Header>
+      <About></About>
+      <Socials></Socials>
       <Projects></Projects>
     </main>
   )

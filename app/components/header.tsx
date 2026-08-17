@@ -24,6 +24,7 @@ export default function Header({title, description, width}: {
 
     const opacityContent = useTransform(scrollYProgress, [0,0.5,1], [0, 1, 0])
     const scaleValue = useTransform(scrollYProgress, [0.5,1], [1, 0.8])
+    const translateHeight = useTransform(scrollYProgress, [0.5, 1], [25, -200])
 
     return(
         <motion.div 
@@ -31,7 +32,7 @@ export default function Header({title, description, width}: {
             style={{
                 marginLeft: 20,
                 opacity: opacityContent,
-                scale: scaleValue
+                scale: scaleValue,
             }}
             className="pt-16 px-5 flex items-center"
         >
@@ -42,6 +43,9 @@ export default function Header({title, description, width}: {
                     opacity: 0,
                     filter: "blur(5px)",
                     rotate: 300
+                }}
+                style={{
+                    y: translateHeight
                 }}
                 animate={{
                     x: 0,
@@ -135,7 +139,7 @@ export default function Header({title, description, width}: {
                         }}
                         
                         key={index}
-                        className="text-shadow-xs text-md text-neutral-500">
+                        className="text-shadow-xs text-md text-neutral-400">
                             {str} &nbsp;
                     </motion.span>)}
                 </div>
@@ -153,7 +157,7 @@ export default function Header({title, description, width}: {
                     transition={{
                         duration: 0.3
                     }}
-                    className="mt-8 px-6 py-2 bg-blue-700/65 text-blue-100 rounded-xl hover:bg-blue-700/55 transition-colors duration-100 cursor-pointer text-xs tracking-wide flex items-center justify-center gap-2">
+                    className="mt-8 px-6 py-2 bg-red-700 text-blue-100 rounded-xl hover:bg-red-500/75 transition-colors duration-100 cursor-pointer text-xs tracking-wide flex items-center justify-center gap-2">
                     <span>
                         resume
                     </span>
