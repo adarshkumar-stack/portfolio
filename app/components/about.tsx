@@ -1,17 +1,22 @@
 "use client"
 
-import { motion, useScroll, useTransform } from "motion/react"
-import { useRef, useState } from "react"
+import { motion, useMotionValue, useScroll, useTransform } from "motion/react"
+import { useRef } from "react"
 
 export default function About() {
     const ref = useRef(null)
-    const [activeBioTab, setActiveBioTab] = useState<"human" | "config">("human")
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start end", "end start"]
     })
-    const opacityContent = useTransform(scrollYProgress, [0,0.2,0.8,1], [0,1,1,0])
-    const scaleValue = useTransform(scrollYProgress, [0,0.2,0.8,1], [0.8,1,1, 0.8])
+    const opacityContent = useTransform(scrollYProgress, [0,0.2,0.6,1], [0,1,1,0])
+    const scaleValue = useTransform(scrollYProgress, [0,0.2,0.6,1], [0.5,1,1, 0.5])
+    const blurValue = useTransform(
+        scrollYProgress,
+        [0, 0.2, 0.6, 1],
+        ["blur(3px)", "blur(0px)", "blur(0px)", "blur(3px)"]
+    )
+    const scaleHeight = useTransform(scrollYProgress, [0,1], [150,-150])
 
     return (
         <motion.div
@@ -19,16 +24,21 @@ export default function About() {
             style={{
                 opacity: opacityContent,
                 scale: scaleValue,
+                filter: blurValue
             }}
             initial={{
 
             }}
             className="m-20 mx-10">
-            <h1 className="text-6xl mx-auto w-fit font-extrabold text-black [-webkit-text-stroke:2px_#690101] ">
+            <h1 className="text-6xl mx-auto w-fit font-extrabold text-black [-webkit-text-stroke:2px_#ad2200] ">
                 About me
             </h1>
             <div className="mx-auto mt-10 flex w-full max-w-5xl flex-col gap-8 px-4 text-neutral-200 sm:px-6">
-                <section className="rounded-lg border border-neutral-800 bg-black shadow-[0_0_20px_rgba(251,84,43,0.3)]">
+                <motion.section
+                    style={{
+                        y: scaleHeight
+                    }}
+                    className="rounded-lg border border-neutral-800 bg-black shadow-[0_0_20px_rgba(251,84,43,0.3)]">
                     <div className="flex items-center justify-between border-b border-neutral-800 px-4 py-3">
                         <div className="flex items-center gap-2">
                             <span className="h-2.5 w-2.5 rounded-full bg-red-700" />
@@ -52,7 +62,7 @@ export default function About() {
                             </p>
                         </div>
                     </div>
-                </section>
+                </motion.section>
             </div>
         </motion.div>
     )

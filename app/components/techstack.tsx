@@ -1,14 +1,35 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
 import { SiTypescript, SiJavascript, SiPython, SiRust, SiReact, SiNextdotjs, SiTailwindcss, SiFramer, SiNodedotjs, SiPrisma, SiPostgresql, SiRedis, SiExpress, SiTurborepo, SiDocker, SiKubernetes, SiGithubactions } from 'react-icons/si'
-import { TbNetwork } from 'react-icons/tb'
+import { motion, useTransform, useScroll } from 'motion/react'
 import { FaAws } from 'react-icons/fa6'
 import { FaConnectdevelop } from 'react-icons/fa'
 
 export default function Stack() {
+    const ref = useRef(null)
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    })
+    const opacityContent = useTransform(scrollYProgress, [0,0.2,0.6,1], [0,1,1,0])
+    const scaleValue = useTransform(scrollYProgress, [0,0.2,0.6,1], [0.5,1,1, 0.5])
+    const blurValue = useTransform(
+        scrollYProgress,
+        [0, 0.2, 0.6, 1],
+        ["blur(3px)", "blur(0px)", "blur(0px)", "blur(3px)"]
+    )
+    const scaleHeight = useTransform(scrollYProgress, [0,1], [50,-50])
+
     return (
-        <div className='mt-4 mb-16 mx-10'>
+        <motion.div 
+            ref={ref} 
+            style={{
+                opacity: opacityContent,
+                scale: scaleValue,
+                filter: blurValue,
+            }}
+            className='mt-4 mb-16 mx-10'>
             <h1 className='font-bold text-3xl text-neutral-300'>
                 Stack
             </h1>
@@ -18,7 +39,11 @@ export default function Stack() {
                         <div className='w-60 shrink-0 px-3 text-neutral-300 text-sm'>
                             {data.title}
                         </div>
-                        <div className='flex flex-wrap'>
+                        <motion.div 
+                            style={{
+                                y: scaleHeight
+                            }}
+                            className='flex flex-wrap'>
                             {data.items.map((item, itemindex) => 
                                 <span key={itemindex} className='m-1 flex items-center justify-center w-30 p-2 border rounded-xl border-neutral-300 text-neutral-300 gap-2'>
                                     <item.icon></item.icon>
@@ -27,11 +52,11 @@ export default function Stack() {
                                     </span>
                                 </span>
                             )}
-                        </div>
+                        </motion.div>
                     </div>
                 )}
             </div>
-        </div>
+        </motion.div>
     )
   
 }

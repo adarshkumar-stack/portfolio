@@ -1,15 +1,33 @@
 "use client"
-import { motion } from "motion/react"
-import { filter } from "motion/react-client"
-import { useState } from "react"
+import { motion, useTransform, useScroll } from "motion/react"
+import { useRef } from "react"
 import { IoLinkOutline, IoLogoGithub  } from "react-icons/io5"
 import { MdArrowRightAlt } from "react-icons/md"
+import { projects, type Project } from "../data/projects"
 
 export default function Projects () {
-    const [imghover, setimghover] = useState(false)
+    const ref = useRef(null)
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    })
+    const opacityContent = useTransform(scrollYProgress, [0,0.2,0.6,1], [0,1,1,0])
+    const scaleValue = useTransform(scrollYProgress, [0,0.2,0.6,1], [0.7,1,1, 0.7])
+    const blurValue = useTransform(
+        scrollYProgress,
+        [0, 0.2, 0.6, 1],
+        ["blur(3px)", "blur(0px)", "blur(0px)", "blur(3px)"]
+    )
+
     return (
-        <div className="p-15 px-10">
-             
+        <motion.div 
+            ref={ref} 
+            style={{
+                opacity: opacityContent,
+                scale: scaleValue,
+                filter: blurValue,
+            }}
+            className="my-15 px-10">
             <div className="mx-auto grid grid-cols-2 pt-10">
                 {projects.slice(0,4).map((project, index) => (
                     <div key={index}>
@@ -68,56 +86,11 @@ export default function Projects () {
                     </div>
                 ))}
             </div>
-            <button className="flex justify-center items-center mx-auto mt-8 gap-2 px-4 py-1  rounded-lg cursor-pointer text-lg text-red-700/70 border-2 bg-black/50 border-red-700/70 hover:scale-[1.02] ">
+            <button className="flex justify-center items-center mx-auto mt-6 gap-2 px-4 py-2  rounded-lg cursor-pointer text-sm text-neutral-200 bg-red-100/10 hover:scale-[1.02] ">
                 show all
-                <MdArrowRightAlt className=" size-7"></MdArrowRightAlt>
+                <MdArrowRightAlt className=" size-4"></MdArrowRightAlt>
             </button>
-        </div>
+        </motion.div>
     )
 }
 
-type Project = {
-    title: string,
-    description: string,
-    githubLink: string,
-    liveLink: string,
-    demoImage: string
-}
-
-const projects: Project[] = [
-    {
-        title: "Centralised Exchange",
-        description: "This is an centralised whene one  can buy and sell their solana tokens. Its build very secure such that the user funds are kept very secure with ourselves",
-        githubLink: "https://github.com/adarshkumar-stack/centralised-exchange",
-        liveLink: "",
-        demoImage: "/project_demo_image.png"
-    },
-    {
-        title: "Centralised Exchange",
-        description: "This is an centralised whene one  can buy and sell their solana tokens. Its build very secure such that the user funds are kept very secure with ourselves",
-        githubLink: "https://github.com/adarshkumar-stack/centralised-exchange",
-        liveLink: "",
-        demoImage: "/project_demo_image.png"
-    },
-    {
-        title: "Centralised Exchange",
-        description: "This is an centralised whene one  can buy and sell their solana tokens. Its build very secure such that the user funds are kept very secure with ourselves",
-        githubLink: "https://github.com/adarshkumar-stack/centralised-exchange",
-        liveLink: "",
-        demoImage: "/project_demo_image.png"
-    },
-    {
-        title: "Centralised Exchange",
-        description: "This is an centralised whene one  can buy and sell their solana tokens. Its build very secure such that the user funds are kept very secure with ourselves",
-        githubLink: "https://github.com/adarshkumar-stack/centralised-exchange",
-        liveLink: "",
-        demoImage: "/project_demo_image.png"
-    },
-    {
-        title: "Centralised Exchange",
-        description: "This is an centralised whene one  can buy and sell their solana tokens. Its build very secure such that the user funds are kept very secure with ourselves",
-        githubLink: "https://github.com/adarshkumar-stack/centralised-exchange",
-        liveLink: "",
-        demoImage: "/project_demo_image.png"
-    }
-]

@@ -84,7 +84,7 @@ export default function Header({title, description, width}: {
                         transition={{
                             duration: 0.3
                         }}
-                        className="tracking-tight flex items-center gap-4  text-shadow-lg text-[50px] text-red-100/50 font-serif">
+                        className="tracking-tight flex items-center gap-4  text-shadow-lg text-[50px] text-neutral-200 font-serif">
                             {title}
                             <MdVerified className="text-blue-500 text-xl"></MdVerified>
                     </motion.h1>
@@ -93,7 +93,7 @@ export default function Header({title, description, width}: {
                             duration: 0.3,
                             type: "spring"
                         }}
-                        className="px-2 bg-neutral-950 py-1 rounded-md text-neutral-200 w-fit h-fit overflow-hidden text-[10px] ">
+                        className="px-2 bg-neutral-950 py-1 rounded-md text-[#ffc800] w-fit h-fit overflow-hidden text-[10px] ">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={roles[index]}

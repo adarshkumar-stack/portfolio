@@ -1,33 +1,54 @@
 "use client"
 
 import {  useRef } from 'react'
-import { motion, useMotionValue, useTransform, useSpring, type MotionValue } from 'motion/react'
+import { motion, useMotionValue, useTransform, useScroll, useSpring, type MotionValue } from 'motion/react'
 import type { IconType } from 'react-icons'
-import { FaGithub, FaTwitter, FaLinkedin, FaMedium } from 'react-icons/fa6'
+import { FaGithub, FaTwitter, FaLinkedin, FaMediumM } from 'react-icons/fa'
 
 export default function Socials() {
-  const mouseX = useMotionValue(Infinity)
+    const ref = useRef(null)
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    })
+    const mouseX = useMotionValue(Infinity)
+    const opacityContent = useTransform(scrollYProgress, [0,0.2,0.6,1], [0,1,1,0])
+    const scaleValue = useTransform(scrollYProgress, [0,0.2,0.6,1], [0.5,1,1, 0.5])
+    const blurValue = useTransform(
+        scrollYProgress,
+        [0, 0.2, 0.6, 1],
+        ["blur(3px)", "blur(0px)", "blur(0px)", "blur(3px)"]
+    )
+    const scaleHeight = useTransform(scrollYProgress, [0,0.2, 0.8,1], [-50,0,0,50])
 
-  return (
-    <div className='m-16 flex flex-col justify-center items-center'>
-        <div className=" text-xl text-neutral-100 pl-10  font-mono lowercase flex gap-2 items-center justify-center">
-            My socials...
-            <span className='bg-neutral-900 border border-yellow-900 p-1 text-[12px] rounded-sm text-yellow-500'>
-                connect with me here
-            </span>
-        </div>
-        <div
-            onMouseMove={(e) => mouseX.set(e.pageX)}
-            onMouseLeave={() => mouseX.set(Infinity)}
-            className="flex items-center justify-between mx-auto m-4 h-20 bg-black border-2 border-neutral-800 rounded-full w-85"
-        >
-            <DockIcon index={0} mouseX={mouseX} icon={FaGithub} label="GitHub" href="https://github.com" />
-            <DockIcon index={1} mouseX={mouseX} icon={FaTwitter} label="Twitter / X" href="https://x.com" />
-            <DockIcon index={2} mouseX={mouseX} icon={FaLinkedin} label="LinkedIn" href="https://linkedin.com" />
-            <DockIcon index={3} mouseX={mouseX} icon={FaMedium} label="Medium" href="https://medium.com" />
-        </div>
-    </div>
-  )
+    return (
+        <motion.div
+            ref={ref} 
+            style={{
+                opacity: opacityContent,
+                scale: scaleValue,
+                filter: blurValue,
+                y: scaleHeight
+            }}
+            className='m-10 flex flex-col justify-center items-center'>
+            <div className=" text-xl text-neutral-100 pl-10  font-mono lowercase flex gap-2 items-center justify-center">
+                My socials...
+                <span className='bg-neutral-900 border border-yellow-900 p-1 text-[12px] rounded-sm text-yellow-500'>
+                    connect with me here
+                </span>
+            </div>
+            <div
+                onMouseMove={(e) => mouseX.set(e.pageX)}
+                onMouseLeave={() => mouseX.set(Infinity)}
+                className="flex items-center justify-between mx-auto m-4 h-20 bg-black border-2 border-neutral-800 rounded-full w-85"
+            >
+                <DockIcon index={0} mouseX={mouseX} icon={FaGithub} label="GitHub" href="https://github.com/adarshkumar-stack" />
+                <DockIcon index={1} mouseX={mouseX} icon={FaTwitter} label="Twitter / X" href="https://x.com/adarsh_345" />
+                <DockIcon index={2} mouseX={mouseX} icon={FaLinkedin} label="LinkedIn" href="https://linkedin.com/12adarshkumar12" />
+                <DockIcon index={3} mouseX={mouseX} icon={FaMediumM} label="Medium" href="https://medium.com/@12adarshkumar12" />
+            </div>
+        </motion.div>
+    )
 }
 
 function DockIcon({ mouseX, icon: Icon, label, href, index }: DockIconProps) {

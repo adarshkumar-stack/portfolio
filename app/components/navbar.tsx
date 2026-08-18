@@ -18,17 +18,17 @@ export default function Navbar() {
     })
 
     return(
-        <div className="sticky top-0 z-50 w-full">
+        <div className="sticky top-0 mt-2 z-50 w-full">
             <motion.div
-                className="flex w-full items-center justify-between bg-black px-4 py-1  backdrop-blur mx-auto "
+                className="flex w-full items-center justify-between bg-black/10 px-4 py-1  backdrop-blur-lg mx-auto "
                 animate={{
                     paddingLeft: shrink? 6 : 16,
                     borderRadius: shrink? "200px": "0px",
                     width: shrink? "80%" : "100%",
                     y: shrink? 6 : 0,
                     background: shrink
-                        ? "rgba(0,0,0,0.55)"
-                        : "rgba(0,0,0,0.85)",
+                        ? "rgba(0,0,0,0.3)"
+                        : "rgba(0,0,0,0.3)",
                     backdropFilter: "blur(5px)",
                     boxShadow: shrink
                         ? "0 0 3px 1px rgba(0,0,0,0.18)"
@@ -64,7 +64,7 @@ export default function Navbar() {
                         onMouseLeave={() => setHovered(null)}
                         key={index}
                         href={item.href}
-                        className="relative flex h-8 min-w-10 items-center justify-center rounded-full px-3 text-center text-xs font-semibold text-red-700/70 transition-colors sm:min-w-20"
+                        className="relative flex h-8 min-w-10 items-center justify-center rounded-full px-3 text-center text-xs font-semibold text-red-700 transition-colors sm:min-w-20"
                         >
                             {hovered === index && <motion.div layoutId="hover" className="absolute inset-0 rounded-full bg-red-100 " />}
                             <motion.span 
@@ -104,22 +104,22 @@ const navList: Navitem[] = [
     },
     {
         title: "About",
-        href: "",
+        href: "#about",
+        description: ""
+    },
+    {
+        title: "Stack",
+        href: "#stack",
         description: ""
     },
     {
         title: "Projects",
-        href: "",
+        href: "#projects",
         description: ""
     },
     {
-        title: "About",
-        href: "",
-        description: ""
-    },
-    {
-        title: "Contact",
-        href: "",
+        title: "Socials",
+        href: "#socials",
         description: ""
     }
 ]
