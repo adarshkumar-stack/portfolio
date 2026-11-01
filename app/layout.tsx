@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ['latin']})
-
 export const metadata: Metadata = {
-  title: "Adarsh Kumar Singh portfolio",
-  description: "This is Adarsh's portfolio website where all can see my professional journey ",
+  title: "Adarsh Kumar Singh — Software Developer",
+  description:
+    "Final-year Computer Science student and software developer focused on full-stack applications, backend services, and AI-powered systems.",
 };
 
 export default function RootLayout({
@@ -15,12 +13,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.className}>
-      <body className="min-h-screen bg-black border  border-neutral-800 antialiased">
-        <div className="mx-auto flex min-h-screen w-full max-w-4xl flex-col border-x border-red-800/40 overflow-clip">
-          {children}
-        </div>
-      </body>
+    <html lang="en">
+      <body>{children}</body>
     </html>
   );
 }
