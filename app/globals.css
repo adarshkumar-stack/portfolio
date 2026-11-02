@@ -210,6 +210,54 @@ summary:focus-visible {
   padding: 88px 5.5% 110px;
 }
 
+.hero-orbit {
+  position: absolute;
+  z-index: 0;
+  top: 48%;
+  right: -2%;
+  width: min(44vw, 440px);
+  overflow: visible;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.orbit-line {
+  fill: none;
+  stroke: #8c9f39;
+  stroke-opacity: 0.3;
+  stroke-width: 1;
+}
+
+.orbit-rotating {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: orbit-rotate 34s linear infinite;
+}
+
+.orbit-dash {
+  stroke-dasharray: 2 9;
+  animation: orbit-dash 28s linear infinite;
+}
+
+.orbit-satellite {
+  fill: var(--accent-muted);
+  animation: satellite-pulse 3.8s ease-in-out infinite;
+}
+
+.orbit-satellite-delayed {
+  animation-delay: -1.9s;
+}
+
+.orbit-spark {
+  fill: none;
+  stroke: var(--accent-muted);
+  stroke-linecap: round;
+  stroke-width: 1.5;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: draw-spark 2.4s 0.6s ease-out forwards;
+}
+
 .hero-copy {
   padding-block: 20px;
 }
@@ -315,6 +363,7 @@ summary:focus-visible {
 
 .portrait-card {
   position: relative;
+  z-index: 1;
   display: flex;
   min-height: 430px;
   flex-direction: column;
@@ -647,6 +696,11 @@ summary:focus-visible {
 .art-card-icon {
   color: #7b8d3f;
   font-size: 12px;
+  transition: transform 180ms ease;
+}
+
+.project-card:hover .art-card-icon {
+  transform: translateY(-2px);
 }
 
 .payroll-art-footer {
@@ -735,6 +789,7 @@ summary:focus-visible {
   border-top: 1px solid #8a9274;
   border-right: 1px solid #8a9274;
   transform: rotate(45deg);
+  animation: connector-pulse 2.2s ease-in-out infinite;
 }
 
 .routing-fork {
@@ -829,11 +884,13 @@ summary:focus-visible {
 .wallet-card-orbit-one {
   top: -82px;
   right: -31px;
+  animation: wallet-drift 18s linear infinite;
 }
 
 .wallet-card-orbit-two {
   top: -70px;
   right: -19px;
+  animation: wallet-drift 24s linear infinite reverse;
 }
 
 .wallet-card-top,
@@ -1086,12 +1143,45 @@ summary:focus-visible {
 }
 
 .contact-section {
+  position: relative;
   overflow: hidden;
   margin: 20px 0 22px;
   padding: 64px 6% 23px;
   border-radius: 18px;
   background: #222320;
   color: #f5f3ed;
+}
+
+.contact-constellation {
+  position: absolute;
+  top: 5px;
+  right: 3%;
+  width: min(32vw, 300px);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.contact-orbit-path {
+  fill: none;
+  stroke: #cafc03;
+  stroke-opacity: 0.28;
+  stroke-width: 1;
+  stroke-dasharray: 3 8;
+  animation: orbit-dash 32s linear infinite;
+}
+
+.contact-orbit-path-secondary {
+  stroke-opacity: 0.16;
+  animation-direction: reverse;
+}
+
+.contact-orbit-dot {
+  fill: #cafc03;
+  animation: satellite-pulse 4s ease-in-out infinite;
+}
+
+.contact-orbit-dot-delayed {
+  animation-delay: -2s;
 }
 
 .contact-section > .eyebrow {
@@ -1213,6 +1303,13 @@ summary:focus-visible {
     grid-template-columns: 1fr;
     gap: 36px;
     padding: 86px 4% 91px;
+  }
+
+  .hero-orbit {
+    top: 64%;
+    right: 50%;
+    width: min(90vw, 440px);
+    transform: translate(50%, -50%);
   }
 
   .hero h1 {
@@ -1492,5 +1589,57 @@ summary:focus-visible {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@keyframes orbit-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-dash {
+  to {
+    stroke-dashoffset: -44;
+  }
+}
+
+@keyframes satellite-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.82);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.16);
+  }
+}
+
+@keyframes draw-spark {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes connector-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: rotate(45deg) scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: rotate(45deg) scale(1.2);
+  }
+}
+
+@keyframes wallet-drift {
+  to {
+    transform: rotate(360deg);
   }
 }

@@ -2,223 +2,10 @@
 
 import Image from "next/image"
 import { MotionConfig, motion } from "motion/react"
+import ProjectVisual from "./components/project-visual"
+import RevealSection from "./components/reveal-section"
+import { achievements, education, skillGroups } from "./data/portfolio"
 import { projects } from "./data/projects"
-
-const skillGroups = [
-  {
-    title: "Languages",
-    skills: ["C", "C++", "JavaScript", "TypeScript", "Python", "Rust"],
-  },
-  {
-    title: "Frontend",
-    skills: ["React.js", "Next.js", "React Motion", "Tailwind CSS"],
-  },
-  {
-    title: "Backend & APIs",
-    skills: [
-      "Node.js",
-      "REST APIs",
-      "Microservices",
-      "RPC-based service communication",
-      "Event-driven architecture",
-      "WebSockets",
-    ],
-  },
-  {
-    title: "Databases & Infrastructure",
-    skills: [
-      "PostgreSQL",
-      "MySQL",
-      "MongoDB",
-      "Redis",
-      "Prisma ORM",
-      "Docker",
-      "Kubernetes",
-      "AWS",
-      "CI/CD",
-    ],
-  },
-  {
-    title: "Observability",
-    skills: ["Grafana", "Prometheus"],
-  },
-  {
-    title: "Generative AI",
-    skills: [
-      "LLM integration",
-      "RAG",
-      "Prompt engineering",
-      "LangChain",
-      "LangGraph",
-      "Vector databases",
-      "Tool calling",
-      "MCP",
-      "Guardrails",
-      "Harness engineering",
-      "Evaluation (evals)",
-    ],
-  },
-  {
-    title: "Core CS",
-    skills: [
-      "Data Structures and Algorithms",
-      "OOP",
-      "Operating Systems",
-      "DBMS",
-      "Computer Networks",
-    ],
-  },
-]
-
-const education = [
-  {
-    qualification: "Bachelor of Technology",
-    subject: "Computer Science and Engineering",
-    school: "Gurukul Kangri Vishwavidyalaya",
-    location: "Haridwar",
-    period: "2023 — 2027",
-    result: "Expected · SGPA 8.2",
-  },
-  {
-    qualification: "Senior Secondary",
-    subject: "Class XII",
-    school: "Valley View School",
-    location: "Jamshedpur, Jharkhand",
-    period: "",
-    result: "75%",
-  },
-  {
-    qualification: "High School",
-    subject: "Class X",
-    school: "Xavier Public School",
-    location: "Jamshedpur, Jharkhand",
-    period: "",
-    result: "88%",
-  },
-]
-
-const achievements = [
-  {
-    number: "01",
-    title: "Hackathon finalist",
-    description:
-      "Selected as a finalist in an Odoo-organized hackathon with 20,000+ participants across India.",
-  },
-  {
-    number: "02",
-    title: "Client projects",
-    description:
-      "Delivered four major client projects, covering design, development, and deployment.",
-  },
-  {
-    number: "03",
-    title: "Problem solving",
-    description:
-      "Solved 500+ coding problems across LeetCode, GeeksforGeeks, and other platforms.",
-  },
-]
-
-function ProjectVisual({ visual }: { visual: (typeof projects)[number]["visual"] }) {
-  if (visual === "payroll") {
-    return (
-      <div aria-hidden="true" className="project-art project-art-payroll">
-        <div className="art-window-bar">
-          <span className="art-window-mark">P</span>
-          <span>PeoplePay360</span>
-          <span className="art-window-label">WORKFORCE</span>
-        </div>
-        <div className="payroll-art-body">
-          <p>YOUR WORKSPACE</p>
-          <strong>People, pay &amp; schedules.</strong>
-          <div className="payroll-art-cards">
-            <div>
-              <span className="art-card-icon">↗</span>
-              <span>Payroll</span>
-            </div>
-            <div>
-              <span className="art-card-icon">▦</span>
-              <span>Schedules</span>
-            </div>
-            <div>
-              <span className="art-card-icon">◎</span>
-              <span>Team</span>
-            </div>
-          </div>
-          <div className="payroll-art-footer">
-            <span>PAYROLL</span>
-            <span>SCHEDULES</span>
-            <span>WORKFORCE</span>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  if (visual === "routing") {
-    return (
-      <div aria-hidden="true" className="project-art project-art-routing">
-        <div className="routing-art-heading">
-          <span className="routing-art-mark">↗</span>
-          <span>One interface. Multiple models.</span>
-        </div>
-        <div className="routing-flow">
-          <div className="routing-node routing-node-request">
-            <span>01</span>
-            <strong>APP REQUEST</strong>
-          </div>
-          <div className="routing-connector">
-            <span />
-          </div>
-          <div className="routing-node routing-node-judge">
-            <span>02</span>
-            <strong>JUDGE MODEL</strong>
-          </div>
-          <div className="routing-fork">
-            <span />
-            <span />
-          </div>
-          <div className="routing-models">
-            <div className="routing-node">
-              <span>A</span>
-              <strong>MODEL</strong>
-            </div>
-            <div className="routing-node">
-              <span>B</span>
-              <strong>MODEL</strong>
-            </div>
-          </div>
-        </div>
-        <span className="routing-art-caption">UNIFIED LLM ROUTING SDK</span>
-      </div>
-    )
-  }
-
-  return (
-    <div aria-hidden="true" className="project-art project-art-wallet">
-      <div className="wallet-art-top">
-        <span>NON-CUSTODIAL</span>
-        <span>WEB WALLET / 01</span>
-      </div>
-      <div className="wallet-visual-card">
-        <div className="wallet-card-orbit wallet-card-orbit-one" />
-        <div className="wallet-card-orbit wallet-card-orbit-two" />
-        <div className="wallet-card-top">
-          <span className="wallet-card-mark">A</span>
-          <span>WEB WALLET</span>
-        </div>
-        <div className="wallet-card-center">⌁</div>
-        <div className="wallet-card-bottom">
-          <span>KEYS STAY YOURS</span>
-          <span>↗</span>
-        </div>
-      </div>
-      <div className="wallet-art-caption">
-        <span>KEY MANAGEMENT</span>
-        <span>TRANSACTION VALIDATION</span>
-      </div>
-    </div>
-  )
-}
 
 export default function Home() {
   return (
@@ -309,6 +96,37 @@ export default function Home() {
               </motion.div>
             </div>
 
+            <svg
+              aria-hidden="true"
+              className="hero-orbit"
+              focusable="false"
+              viewBox="0 0 440 500"
+            >
+              <ellipse
+                className="orbit-line orbit-rotating"
+                cx="220"
+                cy="250"
+                rx="192"
+                ry="112"
+              />
+              <ellipse
+                className="orbit-line orbit-dash"
+                cx="220"
+                cy="250"
+                rx="170"
+                ry="146"
+                transform="rotate(-34 220 250)"
+              />
+              <circle className="orbit-satellite" cx="70" cy="214" r="4" />
+              <circle
+                className="orbit-satellite orbit-satellite-delayed"
+                cx="354"
+                cy="340"
+                r="3"
+              />
+              <path className="orbit-spark" d="M365 116v16m-8-8h16" />
+            </svg>
+
             <motion.div
               animate={{ opacity: 1, y: 0, rotate: 2 }}
               initial={{ opacity: 0, y: 28, rotate: 5 }}
@@ -352,14 +170,10 @@ export default function Home() {
             </motion.a>
           </section>
 
-          <motion.section
+          <RevealSection
             aria-labelledby="about-title"
             className="content-section about-section"
             id="about"
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.div
               className="section-heading"
@@ -398,16 +212,12 @@ export default function Home() {
                 maintainable software.
               </p>
             </motion.div>
-          </motion.section>
+          </RevealSection>
 
-          <motion.section
+          <RevealSection
             aria-labelledby="education-title"
             className="content-section education-section"
             id="education"
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.12 }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="section-title-row">
               <div>
@@ -442,16 +252,12 @@ export default function Home() {
                 </motion.article>
               ))}
             </div>
-          </motion.section>
+          </RevealSection>
 
-          <motion.section
+          <RevealSection
             aria-labelledby="work-title"
             className="content-section work-section"
             id="work"
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.08 }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="section-title-row">
               <div>
@@ -513,16 +319,12 @@ export default function Home() {
                 </motion.article>
               ))}
             </div>
-          </motion.section>
+          </RevealSection>
 
-          <motion.section
+          <RevealSection
             aria-labelledby="stack-title"
             className="content-section stack-section"
             id="stack"
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="section-title-row">
               <div>
@@ -565,16 +367,12 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
-          </motion.section>
+          </RevealSection>
 
-          <motion.section
+          <RevealSection
             aria-labelledby="highlights-title"
             className="content-section highlights-section"
             id="highlights"
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="section-title-row">
               <div>
@@ -603,7 +401,7 @@ export default function Home() {
               <span>IBM Certified in Cloud Computing</span>
               <span>IBM Certified in Generative AI</span>
             </div>
-          </motion.section>
+          </RevealSection>
 
           <motion.footer
             className="contact-section"
@@ -613,6 +411,23 @@ export default function Home() {
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           >
+            <svg
+              aria-hidden="true"
+              className="contact-constellation"
+              focusable="false"
+              viewBox="0 0 300 180"
+            >
+              <path
+                className="contact-orbit-path"
+                d="M14 137C64 8 201 11 276 78"
+              />
+              <path
+                className="contact-orbit-path contact-orbit-path-secondary"
+                d="M58 165C110 75 213 54 293 22"
+              />
+              <circle className="contact-orbit-dot" cx="276" cy="78" r="3" />
+              <circle className="contact-orbit-dot contact-orbit-dot-delayed" cx="58" cy="165" r="2" />
+            </svg>
             <p className="eyebrow">06 / CONTACT</p>
             <h2>
               Let&apos;s build
